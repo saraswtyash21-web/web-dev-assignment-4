@@ -71,7 +71,7 @@ Connect with `io(url, { auth: { token } })`. Connections without a valid JWT are
 | `system` | server → client | Join/leave notifications |
 | `online_users` | server → all | List of online users |
 
-To try it: run `npm start` in one terminal and `npm run demo` in a second terminal (two users sign in, chat in real time, and an invalid token is rejected). You can also open `http://localhost:5000` in two browser tabs, paste two different JWTs and click Connect.
+To try it: run `npm start`, then open `http://localhost:5000` in two browser tabs, paste two different JWTs and click Connect.
 
 ## Event-Driven Features (EventEmitter)
 `src/events/appEvents.js` listens for `user:signup`, `user:login`, `user:login-failed`, `security:alert` (3 failed logins), `note:created/updated/deleted`, `chat:connected`, `chat:message`, `chat:disconnected` and logs them in the server console.
