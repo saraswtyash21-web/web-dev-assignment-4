@@ -1,6 +1,6 @@
 # Secure Connect and Communication Platform (Lab 4)
 
-**Course:** Web Dev III | **Unit:** 4 | **Student:** Prashant Kanwal
+**Course:** Web Dev III | **Unit:** 4
 
 A secure Node.js backend with authentication (bcrypt + JWT), role-based access control, a protected Notes API, real-time chat using Socket.IO, and event-driven features using Node's `EventEmitter`.
 
@@ -11,8 +11,7 @@ Node.js, Express.js, MongoDB (Mongoose), jsonwebtoken, bcrypt, dotenv, Socket.IO
 ```
 secure-connect/
 ├── server.js                 # app + HTTP server + Socket.IO bootstrap
-├── demo-chat.js              # `npm run demo` - two users chatting over Socket.IO
-├── .env.example              # copy to .env
+├── .gitignore                # excludes local dependencies and environment files
 ├── public/index.html         # tiny chat client for testing Socket.IO
 └── src/
     ├── config/db.js          # MongoDB connection
@@ -27,8 +26,8 @@ secure-connect/
 ## Setup
 ```bash
 npm install
-cp .env.example .env     # on Windows: copy .env.example .env
-# edit .env -> set MONGO_URI and a long random JWT_SECRET
+Create a `.env` file with `MONGO_URI` and a long random `JWT_SECRET`.
+# Optional: set PORT, JWT_EXPIRES_IN, and ADMIN_EMAIL
 npm start
 ```
 Server runs at `http://localhost:5000`.
@@ -82,46 +81,3 @@ To try it: run `npm start` in one terminal and `npm run demo` in a second termin
 - JWT signed with a secret from `.env`; expired/invalid tokens return 401
 - Role is never accepted from the request body, preventing self-promotion to admin
 - Users can access only their own notes; admins can access all
-
----
-
-# Postman Output Screenshots
-
-### 1. Signup
-![Signup](screenshots/01-signup.png)
-
-### 2. Login (JWT returned)
-![Login](screenshots/02-login.png)
-
-### 3. Wrong password (401)
-![Login failed](screenshots/03-login-failed.png)
-
-### 4. Protected route without token (401)
-![No token](screenshots/04-notes-no-token.png)
-
-### 5. Protected route with valid JWT
-![Me](screenshots/05-me.png)
-
-### 6. Create note
-![Create note](screenshots/06-create-note.png)
-
-### 7. Get all notes
-![Get notes](screenshots/07-get-notes.png)
-
-### 8. Update note
-![Update note](screenshots/08-update-note.png)
-
-### 9. Delete note
-![Delete note](screenshots/09-delete-note.png)
-
-### 10. RBAC: normal user on `/api/users` (403)
-![Forbidden](screenshots/10-users-forbidden.png)
-
-### 11. RBAC: admin on `/api/users` (200)
-![Admin users](screenshots/11-users-admin.png)
-
-### 12. Real-time chat (browser + server console)
-![Chat](screenshots/12-chat.png)
-
-### 13. EventEmitter logs in server console
-![Events](screenshots/13-events-console.png)
